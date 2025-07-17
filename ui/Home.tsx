@@ -17,7 +17,7 @@ export default function EarthlyDecorativeFrame() {
 
             <Center style={{ width: "100%", height: "100vh", padding: "0 20px" }}>
                 <Button onClick={action} size="lg" fullWidth>
-                    Record Description
+                   Alligator Quest
                 </Button>
             </Center>
 
