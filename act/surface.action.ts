@@ -1,0 +1,9 @@
+export const INIT_SURFACE = "[Surface action] Init Surface";
+export const UPDATE_SURFACE = "[Surface action] Update Surface";
+export const READ_SURFACE = "[Read action] Read Surface";
+export const WRITE_SURFACE = "[Write action] Write Surface";
+export const REMOVE_SURFACE = "[Write action] Remove Surface";
+export const CREATE_SURFACE = "[Create action] Create Surface";
+export const DIMENSION_SURFACE = "[Dimension action] Dimension Surface";
+export const DELETE_SURFACE = "[Delete action] Delete Surface";
+export const EXTRACT_SURFACE = "[Extract action] Extract Surface";

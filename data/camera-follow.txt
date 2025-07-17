@@ -1,0 +1,110 @@
+"use client"
+
+import { useRef, useState, useEffect } from "react"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { Grid, Environment } from "@react-three/drei"
+import * as THREE from "three"
+
+export default function FollowingCameraScene() {
+  return (
+    <div className="w-full h-screen bg-black">
+      <Canvas shadows camera={{ position: [0, 5, 10], fov: 50 }}>
+        <Scene />
+      </Canvas>
+      <div className="absolute bottom-5 left-5 text-white bg-black/50 p-3 rounded-lg">
+        <p>Use WASD keys to move the cube</p>
+        <p>The camera will follow the cube with a fixed offset</p>
+      </div>
+    </div>
+  )
+}
+
+function Scene() {
+  const [cubePosition, setCubePosition] = useState(new THREE.Vector3(0, 0.5, 0))
+
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
+      <Grid infiniteGrid cellSize={1} cellThickness={0.5} sectionSize={5} sectionThickness={1} />
+      <MovableCube position={cubePosition} setPosition={setCubePosition} />
+      <FollowCamera target={cubePosition} />
+      <Environment preset="city" />
+    </>
+  )
+}
+
+function MovableCube({ position, setPosition }) {
+  const meshRef = useRef()
+  const keysPressed = useRef({})
+  const speed = 0.1
+
+  useEffect(() => {
+    // Set up key down and key up listeners
+    const handleKeyDown = (e) => {
+      keysPressed.current[e.key.toLowerCase()] = true
+    }
+
+    const handleKeyUp = (e) => {
+      keysPressed.current[e.key.toLowerCase()] = false
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("keyup", handleKeyUp)
+
+    // Clean up event listeners
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keyup", handleKeyUp)
+    }
+  }, [])
+
+  useFrame(() => {
+    // Create a new position based on the current one
+    const newPosition = position.clone()
+
+    // Update position based on WASD keys
+    if (keysPressed.current["w"] || keysPressed.current["arrowup"]) newPosition.z -= speed
+    if (keysPressed.current["s"] || keysPressed.current["arrowdown"]) newPosition.z += speed
+    if (keysPressed.current["a"] || keysPressed.current["arrowleft"]) newPosition.x -= speed
+    if (keysPressed.current["d"] || keysPressed.current["arrowright"]) newPosition.x += speed
+
+    // Update the position state if it changed
+    if (!position.equals(newPosition)) {
+      setPosition(newPosition)
+    }
+
+    // Update the mesh position
+    if (meshRef.current) {
+      meshRef.current.position.copy(newPosition)
+    }
+  })
+
+  return (
+    <mesh ref={meshRef} position={position.toArray()} castShadow receiveShadow>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="#ff6b6b" roughness={0.5} metalness={0.5} />
+    </mesh>
+  )
+}
+
+function FollowCamera({ target }) {
+  const { camera } = useThree()
+
+  // Define the fixed offset from the target
+  const offset = new THREE.Vector3(3, 4, 6)
+
+  useFrame(() => {
+    // Calculate the new camera position based on the target position and offset
+    const newPosition = target.clone().add(offset)
+
+    // Update the camera position
+    camera.position.copy(newPosition)
+
+    // Make the camera look at the target
+    camera.lookAt(target)
+  })
+
+  return null
+}
+
