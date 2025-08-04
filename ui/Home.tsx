@@ -4,7 +4,6 @@ import React from "react";
 
 let dex = 0
 
-import { Center, Button } from "@mantine/core"
 
 export default function EarthlyDecorativeFrame() {
 
@@ -15,12 +14,8 @@ export default function EarthlyDecorativeFrame() {
     return (
         <div>
 
-            <Center style={{ width: "100%", height: "100vh", padding: "0 20px" }}>
-                <Button onClick={action} size="lg" fullWidth>
                    Alligator Quest
-                </Button>
-            </Center>
-
+              
         </div>)
 }
 
