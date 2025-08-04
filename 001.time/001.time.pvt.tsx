@@ -47,5 +47,6 @@ var init = () => {
 
 
 export const time = async (typ, obj) => {
+  
   return sim.hunt(typ, obj)
 }

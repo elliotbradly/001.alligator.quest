@@ -1,4 +1,4 @@
-import clone from "clone-deep";
+import * as clone from "clone-deep";
 import * as Act from "./earth.action";
 import { EarthModel } from "./earth.model";
 import * as Buzz from "./earth.buzzer";
@@ -16,8 +16,14 @@ export function reducer(model: EarthModel = new EarthModel(), act: Act.Actions, 
  case Act.OPEN_EARTH:
  return Buzz.openEarth(clone(model), act.bale, state);
 
-case Act.TEST_EARTH:
- return Buzz.testEarth(clone(model), act.bale, state);
+case Act.ADVANCE_EARTH:
+ return Buzz.advanceEarth(clone(model), act.bale, state);
+ 
+case Act.OUTPUT_EARTH:
+ return Buzz.outputEarth(clone(model), act.bale, state);
+ 
+case Act.ACCESS_EARTH:
+ return Buzz.accessEarth(clone(model), act.bale, state);
  
  default:
  return model;

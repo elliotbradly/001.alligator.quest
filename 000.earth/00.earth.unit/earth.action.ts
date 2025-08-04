@@ -21,11 +21,25 @@ export class UpdateEarth implements Action {
  constructor(public bale: EarthBit) {}
 }
 
-export const TEST_EARTH = "[Test action] Test Earth";
- export class TestEarth implements Action {
- readonly type = TEST_EARTH;
+export const ADVANCE_EARTH = "[Advance action] Advance Earth";
+ export class AdvanceEarth implements Action {
+ readonly type = ADVANCE_EARTH;
+ constructor(public bale: EarthBit) {}
+ }
+ 
+export const OUTPUT_EARTH = "[Output action] Output Earth";
+ export class OutputEarth implements Action {
+ readonly type = OUTPUT_EARTH;
+ constructor(public bale: EarthBit) {}
+ }
+ 
+export const ACCESS_EARTH = "[Access action] Access Earth";
+ export class AccessEarth implements Action {
+ readonly type = ACCESS_EARTH;
  constructor(public bale: EarthBit) {}
  }
  
 export type Actions = | InitEarth | UpdateEarth | OpenEarth 
-| TestEarth
+| AdvanceEarth
+| OutputEarth
+| AccessEarth
