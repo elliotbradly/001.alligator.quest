@@ -1,0 +1,12 @@
+export { initColor  } from "./buz/0.color.buzz";
+export { updateColor  } from "./buz/0.color.buzz";
+export { readColor } from "./buz/0.color.buzz";
+export { writeColor } from "./buz/0.color.buzz";
+export { removeColor } from "./buz/0.color.buzz";
+export { deleteColor } from "./buz/0.color.buzz";
+export { listColor  } from "./buz/0.color.buzz";
+export { randomColor  } from "./buz/randomColor.buzz";
+export { basketColor  } from "./buz/basketColor.buzz";
+export { openColor  } from "./buz/openColor.buzz";
+export { createColor } from "./buz/createColor.buzz";
+export { accessColor  } from "./buz/accessColor.buzz";

@@ -1,0 +1,15 @@
+{
+ "extends": "../tsconfig-base.json",
+ "compilerOptions": {
+ "outDir": "../dist/010.sower",
+ "composite": true,
+ "skipLibCheck": true
+ },
+ "include": [
+ "**/*"
+, "../wpapi.js" ],
+ "exclude": [
+ "**/node_modules"
+ ]
+}
+
