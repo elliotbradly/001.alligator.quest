@@ -25,12 +25,13 @@ export const openEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
         return cpy
     }
 
+
     cpy.opened = 1
 
     cpy.idxClk = 'clk00'
     cpy.idxInc = 'inc00'
 
-    var clk = { day: 0, hrs: 0, min: 0, mth: 0, sec: 0, yrs: 1847 }
+    var clk = { day: 0, hrs: 0, min: 0, mth: 0, sec: 0, yrs: 1822 }
 
     bit = await global[PVT.TIME](ActClk.WRITE_CLOCK, { idx: cpy.idxClk, clk })
 
@@ -52,23 +53,20 @@ export const openEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
 
     //ste.hunt(ActCtl.INCREMENT_CONTROL, { src: Increment.DEFAULT })
 
-    bit = await global[PVT.SPACE](ActMap.WRITE_HEXMAP, { idx: 'map00' })
-    var map = bit.mapBit.dat.bit
+    //bit = await global[PVT.SPACE](ActMap.WRITE_HEXMAP, { idx: 'map00' })
+    //var map = bit.mapBit.dat.bit
   
-    bit = await global[PVT.SPACE](ActFoc.WRITE_FOCUS, { idx: 'foc00', src: 'map00' })
-    var focus = bit.focBit.dat
+    //bit = await global[PVT.SPACE](ActFoc.WRITE_FOCUS, { idx: 'foc00', src: 'map00' })
+    //var focus = bit.focBit.dat
 
-    var FS = require('fs-extra')
+    //var FS = require('fs-extra')
 
-    var lst = FS.readJsonSync('./public/data/color/000.color.name.json')
-    bit = await global[PVT.SOWER](ActClr.OPEN_COLOR, { lst })
+    //var lst = FS.readJsonSync('./public/data/color/000.color.name.json')
+    //bit = await global[PVT.SOWER](ActClr.OPEN_COLOR, { lst })
 
-
-
-    bit = await global[PVT.SOWER](ActSpk.WRITE_SPARK, { idx: 'spk00' })
+    //bit = await global[PVT.SOWER](ActSpk.WRITE_SPARK, { idx: 'spk00' })
 
     
-
     bal.slv({ ertBit: { idx: "open-earth", dat: { val: cpy.opened } } });
 
     return cpy;

@@ -22,10 +22,12 @@ export default function RootLayout({
 
 
   var init = async ()=>{
-    global.EARTH = await initEarth(1)
     global.TIME = await initTime(1)
+    global.EARTH = await initEarth(1)
     global.SPACE = await initSpace(1)
     global.SOWER = await initSower(1)
+
+    console.log("looking for time " + global.TIME )
   }
 
   
