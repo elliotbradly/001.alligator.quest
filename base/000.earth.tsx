@@ -6,13 +6,13 @@ import * as ActErt from "@earth/00.earth.unit/earth.action"
 var dex = 0;
 
 export const initEarth = async (val) => {
-  await earth(ActErt.INIT_EARTH, { val: 0 });
+  var bit = await earth(ActErt.INIT_EARTH, { val: 0 });
   dex += 1;
-  return earth
+  return bit
 }
 
 export const updateEarth = async (val) => {
-  await earth(ActErt.UPDATE_EARTH, { val: 0 });
+ var bit = await earth(ActErt.UPDATE_EARTH, { val: 0 });
   dex += 1;
-  return earth
+  return bit
 }

@@ -6,6 +6,8 @@ import * as ActSpk from '../../act/spark.action'
 import * as ActTme from '../../act/time.action'
 
 import * as ActClk from '../../act/clock.action'
+import * as ActClr from '../../act/color.action'
+
 import * as ActInc from '../../act/increment.action'
 import * as ActMap from "../../act/hexmap.action";
 import * as ActFoc from "../../act/focus.action";
@@ -55,6 +57,12 @@ export const openEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
   
     bit = await global[PVT.SPACE](ActFoc.WRITE_FOCUS, { idx: 'foc00', src: 'map00' })
     var focus = bit.focBit.dat
+
+    var FS = require('fs-extra')
+
+    var lst = FS.readJsonSync('./public/data/color/000.color.name.json')
+    bit = await global[PVT.SOWER](ActClr.OPEN_COLOR, { lst })
+
 
 
     bit = await global[PVT.SOWER](ActSpk.WRITE_SPARK, { idx: 'spk00' })
