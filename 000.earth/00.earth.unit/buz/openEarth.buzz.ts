@@ -30,7 +30,7 @@ export const openEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
     cpy.idxClk = 'clk00'
     cpy.idxInc = 'inc00'
 
-    var clk = { day: 0, hrs: 0, min: 0, mth: 0, sec: 0, yrs: 1974 }
+    var clk = { day: 0, hrs: 0, min: 0, mth: 0, sec: 0, yrs: 1847 }
 
     bit = await global[PVT.TIME](ActClk.WRITE_CLOCK, { idx: cpy.idxClk, clk })
 
