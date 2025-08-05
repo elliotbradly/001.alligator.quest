@@ -59,12 +59,12 @@ export const openEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
     bit = await global[PVT.SPACE](ActFoc.WRITE_FOCUS, { idx: 'foc00', src: 'map00' })
     var focus = bit.focBit.dat
 
-    var FS = require('fs-extra')
+    //var FS = require('fs-extra')
 
-    var lst = FS.readJsonSync('./public/data/color/000.color.name.json')
-    bit = await global[PVT.SOWER](ActClr.OPEN_COLOR, { lst })
+    //var lst = FS.readJsonSync('./public/data/color/000.color.name.json')
+    //bit = await global[PVT.SOWER](ActClr.OPEN_COLOR, { lst })
 
-    bit = await global[PVT.SOWER](ActSpk.WRITE_SPARK, { idx: 'spk00' })
+    //bit = await global[PVT.SOWER](ActSpk.WRITE_SPARK, { idx: 'spk00' })
 
     bal.slv({ ertBit: { idx: "open-earth", dat: { val: cpy.opened } } });
 

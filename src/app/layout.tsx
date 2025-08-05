@@ -3,10 +3,7 @@ import type { Metadata } from "next";
 import Providers from "../lib/query-provider";
 import "./globals.css";
 
-import { initEarth } from '../../base/000.earth'
-import { initTime } from '../../base/001.time'
-import { initSpace } from '../../base/002.space'
-import { initSower } from '../../base/010.sower'
+
 
 export const metadata: Metadata = {
   title: "Next App Mantine Tailwind Template",
@@ -21,17 +18,6 @@ export default function RootLayout({
 }>) {
 
 
-  var init = async ()=>{
-    global.TIME = await initTime(1)
-    global.EARTH = await initEarth(1)
-    global.SPACE = await initSpace(1)
-    global.SOWER = await initSower(1)
-
-    console.log("looking for time " + global.TIME )
-  }
-
-  
-  init()
  
   return (
     <html lang="en" suppressHydrationWarning>
