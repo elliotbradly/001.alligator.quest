@@ -18,7 +18,7 @@ var bit
 
 export const outputEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
 
-    var output = { dex: 0, now: null, colorListSize: 0 };
+    var output = { dex: 0, now: null, map:null, focus:null, colorListSize: 0 };
     output.dex = cpy.dex
 
     bit = await global['TIME'](ActClk.READ_CLOCK, { idx: cpy.idxClk })
@@ -26,10 +26,11 @@ export const outputEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) =>
     output.now = bit.clkBit.dat
 
     bit = await global['SPACE'](ActMap.READ_HEXMAP, { idx: 'map00' })
-    var map = bit.mapBit.dat.bit
+    output.map = bit.mapBit.dat.bit
+    
 
     bit = await global['SPACE'](ActFoc.READ_FOCUS, { idx: 'foc00', src: 'map00' })
-    var focus = bit.focBit.dat
+    output.focus = bit.focBit.dat
 
     bal.slv({ ertBit: { idx: "output-earth", dat: output, val: cpy.opened } });
 
