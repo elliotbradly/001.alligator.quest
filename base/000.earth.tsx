@@ -16,3 +16,9 @@ export const updateEarth = async (val) => {
   dex += 1;
   return bit
 }
+
+export const openEarth = async (val) => {
+  var bit = await earth(ActErt.OPEN_EARTH, { val: 0 });
+   dex += 1;
+   return bit
+ }
