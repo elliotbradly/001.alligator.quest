@@ -12,7 +12,7 @@ import { DateTime } from 'luxon';
 var bit, lst, dex, src, dat;
 
 export const initTime = async (cpy: TimeModel, bal: TimeBit, ste: State) => {
-  bal.slv({ intBit: { idx: 'init-time', val:1 } });
+  bal.slv({ intBit: { idx: 'init-time' } });
   return cpy;
 };
 

@@ -21,11 +21,9 @@ var bit
 export const advanceEarth = async (cpy: EarthModel, bal: EarthBit, ste: State) => {
 
     cpy.dex += 1;
-
-    
     
 
-   bit = await global['TIME'](ActPrg.UPDATE_PROGRESS, { idx: cpy.idxInc, src: cpy.idxClk });
+    bit = await global['TIME'](ActPrg.UPDATE_PROGRESS, { idx: cpy.idxInc, src: cpy.idxClk });
 
     
 

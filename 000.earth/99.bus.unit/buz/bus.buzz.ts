@@ -1,12 +1,11 @@
+import * as ActBus from "../../99.bus.unit/bus.action";
+import * as ActCol from "../../97.collect.unit/collect.action";
 
 import { BusModel } from "../bus.model";
 import BusBit from "../fce/bus.bit";
 import State from "../../99.core/state";
 import S from "string";
-import clone from "clone-deep";
-
-import * as ActBus from "../../99.bus.unit/bus.action";
-import * as ActCol from "../../97.collect.unit/collect.action";
+import * as clone from "clone-deep";
 
 var lst, idx, bit, src, dat, dex;
 
@@ -40,10 +39,9 @@ export const initBus = (cpy: BusModel, bal: BusBit, ste: State) => {
     cpy.client = cpy.MQTT.connect(cpy.host);
     cpy.client.on('message', (tpc, msg) => { messageBus(cpy, { idx: tpc, src: msg }, ste) })
     cpy.client.on('connect', () => {
-      var output = bal.idx + " connected " + cpy.host
-      console.log( output )
+      console.log(bal.idx + " connected " + cpy.host)
       openBus(cpy, { idx: 'init-bus', lst: cpy.actList }, ste)
-      if (bal.slv != null) bal.slv({ intBit: { idx: "init-bus", dat:output } })
+      if (bal.slv != null) bal.slv({ intBit: { idx: "init-bus" } })
     })
   } else {
 
@@ -134,14 +132,11 @@ export const connectBus = (cpy: BusModel, bal: BusBit, ste: State) => {
 
 export const messageBus = async (cpy: BusModel, bal: BusBit, ste: State) => {
 
-  
 
   if (bal.src != null) dat = bal.src.toString()
 
   idx = bal.idx
   dat = JSON.parse(dat)
-
-  
 
   var client = cpy.client;
 
@@ -166,8 +161,6 @@ export const messageBus = async (cpy: BusModel, bal: BusBit, ste: State) => {
   } else {
     var bit = await ste.hunt(idx, dat)
     var cloneBit = clone(bit)
-
-    
 
     for (var key in cloneBit) {
 
@@ -230,4 +223,5 @@ export const updateBus = async (cpy: BusModel, bal: BusBit, ste: State) => {
 
 
 var patch = (ste, type, bale) => ste.dispatch({ type, bale });
+
 
