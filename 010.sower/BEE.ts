@@ -1,8 +1,6 @@
 import Model from "./99.core/interface/model.interface";
 
 import SowerUnit from "./00.sower.unit/sower.unit";
-import FateUnit from "./01.fate.unit/fate.unit";
-import ColorUnit from "./02.color.unit/color.unit";
 import SparkUnit from "./03.spark.unit/spark.unit";
 import AmbitUnit from "./04.ambit.unit/ambit.unit";
 import AvaouUnit from "./05.avaou.unit/avaou.unit";
@@ -20,10 +18,6 @@ import BusUnit from "./99.bus.unit/bus.unit";
 
 import Sower from "./00.sower.unit/fce/sower.interface";
 import { SowerModel } from "./00.sower.unit/sower.model";
-import Fate from "./01.fate.unit/fce/fate.interface";
-import { FateModel } from "./01.fate.unit/fate.model";
-import Color from "./02.color.unit/fce/color.interface";
-import { ColorModel } from "./02.color.unit/color.model";
 import Spark from "./03.spark.unit/fce/spark.interface";
 import { SparkModel } from "./03.spark.unit/spark.model";
 import Ambit from "./04.ambit.unit/fce/ambit.interface";
@@ -52,11 +46,9 @@ import Bus from "./99.bus.unit/fce/bus.interface";
 import { BusModel } from "./99.bus.unit/bus.model";
 
 
-export const list: Array<any> = [SowerUnit,FateUnit,ColorUnit,SparkUnit,AmbitUnit,AvaouUnit,AvideUnit,ArtesUnit,SupernalUnit,BlessedUnit,PastoralUnit,BoundedUnit,PrimalUnit,PlayerUnit,CollectUnit,BusUnit];
+export const list: Array<any> = [SowerUnit,SparkUnit,AmbitUnit,AvaouUnit,AvideUnit,ArtesUnit,SupernalUnit,BlessedUnit,PastoralUnit,BoundedUnit,PrimalUnit,PlayerUnit,CollectUnit,BusUnit];
 
 import * as reduceFromSower from "./00.sower.unit/sower.reduce";
-import * as reduceFromFate from "./01.fate.unit/fate.reduce";
-import * as reduceFromColor from "./02.color.unit/color.reduce";
 import * as reduceFromSpark from "./03.spark.unit/spark.reduce";
 import * as reduceFromAmbit from "./04.ambit.unit/ambit.reduce";
 import * as reduceFromAvaou from "./05.avaou.unit/avaou.reduce";
@@ -74,8 +66,6 @@ import * as reduceFromBus from "./99.bus.unit/bus.reduce";
 
 export const reducer: any = {
  sower : reduceFromSower.reducer, 
-fate : reduceFromFate.reducer, 
-color : reduceFromColor.reducer, 
 spark : reduceFromSpark.reducer, 
 ambit : reduceFromAmbit.reducer, 
 avaou : reduceFromAvaou.reducer, 
@@ -95,8 +85,6 @@ bus : reduceFromBus.reducer,
 export default class UnitData implements Model {
  
  sower : Sower = new SowerModel();
-fate : Fate = new FateModel();
-color : Color = new ColorModel();
 spark : Spark = new SparkModel();
 ambit : Ambit = new AmbitModel();
 avaou : Avaou = new AvaouModel();
